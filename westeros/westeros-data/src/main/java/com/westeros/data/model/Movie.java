@@ -13,7 +13,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private long sourceId;
     private boolean adult;
     private String backdropPath;
     private int budget;
@@ -40,9 +40,15 @@ public class Movie {
     private List<Language> spokenLanguages = new ArrayList<>();
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
-    private List<ActorToMovie> actorToMovie = new ArrayList<>();
+    private List<Character> characters = new ArrayList<>();
 
+    public long getSourceId() {
+        return sourceId;
+    }
 
+    public void setSourceId(long sourceId) {
+        this.sourceId = sourceId;
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -188,12 +194,12 @@ public class Movie {
         this.spokenLanguages = spokenLanguages;
     }
 
-    public List<ActorToMovie> getCast() {
-        return actorToMovie;
+    public List<Character> getCharacters() {
+        return characters;
     }
 
-    public void setCast(List<ActorToMovie> actorToMovie) {
-        this.actorToMovie = actorToMovie;
+    public void setCharacters(List<Character> character) {
+        this.characters = character;
     }
 
     @Override
@@ -201,11 +207,11 @@ public class Movie {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Movie movie = (Movie) o;
-        return adult == movie.adult && budget == movie.budget && Double.compare(movie.popularity, popularity) == 0 && runtime == movie.runtime && voteCount == movie.voteCount && Double.compare(movie.voteAverage, voteAverage) == 0 && Objects.equals(id, movie.id) && Objects.equals(backdropPath, movie.backdropPath) && Objects.equals(homepage, movie.homepage) && Objects.equals(originalLanguage, movie.originalLanguage) && Objects.equals(originalTitle, movie.originalTitle) && Objects.equals(overview, movie.overview) && Objects.equals(posterPath, movie.posterPath) && Objects.equals(releaseDate, movie.releaseDate) && Objects.equals(productionCompanies, movie.productionCompanies) && Objects.equals(productionCountries, movie.productionCountries) && Objects.equals(genres, movie.genres) && Objects.equals(spokenLanguages, movie.spokenLanguages) && Objects.equals(actorToMovie, movie.actorToMovie);
+        return sourceId == movie.sourceId && adult == movie.adult && budget == movie.budget && Double.compare(movie.popularity, popularity) == 0 && runtime == movie.runtime && voteCount == movie.voteCount && Double.compare(movie.voteAverage, voteAverage) == 0 && Objects.equals(id, movie.id) && Objects.equals(backdropPath, movie.backdropPath) && Objects.equals(homepage, movie.homepage) && Objects.equals(originalLanguage, movie.originalLanguage) && Objects.equals(originalTitle, movie.originalTitle) && Objects.equals(overview, movie.overview) && Objects.equals(posterPath, movie.posterPath) && Objects.equals(releaseDate, movie.releaseDate) && Objects.equals(productionCompanies, movie.productionCompanies) && Objects.equals(productionCountries, movie.productionCountries) && Objects.equals(genres, movie.genres) && Objects.equals(spokenLanguages, movie.spokenLanguages) && Objects.equals(characters, movie.characters);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, adult, backdropPath, budget, homepage, originalLanguage, originalTitle, overview, popularity, posterPath, releaseDate, runtime, voteCount, voteAverage, productionCompanies, productionCountries, genres, spokenLanguages, actorToMovie);
+        return Objects.hash(id, sourceId, adult, backdropPath, budget, homepage, originalLanguage, originalTitle, overview, popularity, posterPath, releaseDate, runtime, voteCount, voteAverage, productionCompanies, productionCountries, genres, spokenLanguages, characters);
     }
 }

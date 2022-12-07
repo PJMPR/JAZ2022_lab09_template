@@ -3,12 +3,12 @@ package com.westeros.data.model;
 import jakarta.persistence.*;
 
 @Entity
-public class ActorToMovie {
+public class Character {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String character;
+    private String name;
     @ManyToOne
     private Actor actor;
     @ManyToOne
@@ -22,12 +22,12 @@ public class ActorToMovie {
         this.id = id;
     }
 
-    public String getCharacter() {
-        return character;
+    public String getName() {
+        return name;
     }
 
-    public void setCharacter(String character) {
-        this.character = character;
+    public void setName(String character) {
+        this.name = character;
     }
 
     public Actor getActor() {

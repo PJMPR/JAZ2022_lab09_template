@@ -16,7 +16,6 @@ public class Actor {
 
     private int sourceId;
     private String name;
-    private String character;
     private String profilePath;
     private String alsoKnownAs;
     private String biography;
@@ -25,7 +24,7 @@ public class Actor {
     private double popularity;
 
     @OneToMany(mappedBy = "actor")
-    private List<ActorToMovie> actorToMovie = new ArrayList<>();
+    private List<Character> characters = new ArrayList<>();
 
     public long getId() {
 
@@ -50,14 +49,6 @@ public class Actor {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCharacter() {
-        return character;
-    }
-
-    public void setCharacter(String character) {
-        this.character = character;
     }
 
     public String getProfilePath() {
@@ -108,12 +99,12 @@ public class Actor {
         this.popularity = popularity;
     }
 
-    public List<ActorToMovie> getCast() {
-        return actorToMovie;
+    public List<Character> getCharacters() {
+        return characters;
     }
 
-    public void setCast(List<ActorToMovie> actorToMovie) {
-        this.actorToMovie = actorToMovie;
+    public void setCharacters(List<Character> character) {
+        this.characters = character;
     }
 
     @Override
@@ -121,11 +112,11 @@ public class Actor {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Actor actor = (Actor) o;
-        return id == actor.id && sourceId == actor.sourceId && Double.compare(actor.popularity, popularity) == 0 && Objects.equals(name, actor.name) && Objects.equals(character, actor.character) && Objects.equals(profilePath, actor.profilePath) && Objects.equals(alsoKnownAs, actor.alsoKnownAs) && Objects.equals(biography, actor.biography) && Objects.equals(birthday, actor.birthday) && Objects.equals(deathday, actor.deathday) && Objects.equals(actorToMovie, actor.actorToMovie);
+        return id == actor.id && sourceId == actor.sourceId && Double.compare(actor.popularity, popularity) == 0 && Objects.equals(name, actor.name) && Objects.equals(profilePath, actor.profilePath) && Objects.equals(alsoKnownAs, actor.alsoKnownAs) && Objects.equals(biography, actor.biography) && Objects.equals(birthday, actor.birthday) && Objects.equals(deathday, actor.deathday) && Objects.equals(characters, actor.characters);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, sourceId, name, character, profilePath, alsoKnownAs, biography, birthday, deathday, popularity, actorToMovie);
+        return Objects.hash(id, sourceId, name, profilePath, alsoKnownAs, biography, birthday, deathday, popularity, characters);
     }
 }
