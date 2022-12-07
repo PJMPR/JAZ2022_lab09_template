@@ -1,9 +1,15 @@
 package com.westeros.moviesclient.contract;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class CompanySummaryDto {
     int id;
+
+    @JsonProperty("logo_path")
     String logoPath;
     String name;
+
+    @JsonProperty("origin_country")
     String originCountry;
 
     public int getId() {
