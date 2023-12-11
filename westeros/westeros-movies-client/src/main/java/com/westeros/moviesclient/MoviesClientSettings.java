@@ -1,13 +1,18 @@
 package com.westeros.moviesclient;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+@Component
 public class MoviesClientSettings implements IMoviesClientSettings {
     private String apiKey;
     private String baseUrl;
     private int apiVersion;
 
-    public MoviesClientSettings(String apiKey, String baseUrl, int apiVersion) {
+    public MoviesClientSettings(
+            @Value("${themoviedb.api.key}") String apiKey,
+            @Value("${themoviedb.api.host}") String baseUrl,
+            @Value("${themoviedb.api.version}") int apiVersion) {
 
         this.apiKey = apiKey;
         this.baseUrl = baseUrl;
