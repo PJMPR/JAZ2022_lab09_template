@@ -24,6 +24,6 @@ public class WesterosMoviesClientApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        //Main.CheckItOut(client);
+        Main.CheckItOut(client);
     }
 }
